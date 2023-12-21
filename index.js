@@ -1,63 +1,53 @@
-// let box1 = 'Hello';
-
-// let box2; //undefined
-
-// box2 = 15; //15
-
-//Змінна cons має бути визначена
-
-// const secretWord = 'syperSecret!Kyivstar!Cebersecuruti';
-
-// // console.log(secretWord);
-
-// //Перевизначати cons НЕ МОЖНА, браузер видає помилку Uncaught TypeError: Assignment to constant variable.
-// secretWord = 'wordd';
-
-// console.log(box2); // Не виконається, через помилку на рядку 14
-
-//ОПЕРАЦІЇ З ЧИСЛАМИ "+""-""*""/""
-
-let result1 = 1 + 2; //3
-
-// console.log(result1);
-
-let result2 = 3 - 2; //1
-
-// console.log(result2);
-
-let result3 = 2 * 2; //4
-
-// console.log(result3);
-
-let result4 = 4 / 2; //2
-
-// console.log(result4);
-
-// також може складати дробні числа
-
-let result5 = 0.1 + 0.2; //0.3
-
-// console.log(result5);
-
-let notAllowed = 10 / 0; //коли ділимо на 0 отримуємо значення Infinity
-
-// console.log(notAllowed);
-
-let brrrr = 10 / 'Hello world';
-
-// console.log(brrrr); // NaN - Not a Number - операція неприпустима з точки зору математики
+//Перетворення (приведення) типу даних
+ 
 
 
-//Оператор "+" складає числа (зазвичай), а ще він вміє склеювати строки (КОНКАТЕНАЦІЯ)
-// У нас є 2 рядки і ми склеюємо їх в 1
 
-let newLine = 'Hello' + 'World';
-// console.log(newLine);
+// Перетворення типу даних - коли значення змінює тип даних з одного на інший
+// Існує 2 типи перетворення даних: явне і неявне.
+//приклад неявного перетворення даних (implicit type conversion)
+// Мінус - це математичний оператор
 
-newLine = 5 + 'Hello'; //в даному випадку "+" працює не як додавання в математиці, а як конкатенатор, склеюючи рядки.
-// console.log(newLine);
+let num = 6 - '1';  //5 JS-перетворив самостійно зі '1' строки число 1
+// console.log(num);
 
-newLine = '1' + 1; // тут ми отримуємо 11, а не 2))) тому що "1" це рядок
+//Явне перетворення типів (explicit type conversion) - приведення типів (ми свідомо викор функції щоб змінити значення)
 
-console.log(newLine);
+let thisIsNumber = Number('45');
 
+//Boolean - автоматично (неявно) приводиться до типу Number при автоматичних розрахунках
+//true -->  1
+//false --> 2
+
+let booleanNumber = true + 1; // 1 + 1 = 2
+
+// console.log(booleanNumber); //2
+
+//String
+
+let ThisIsString = String (45);// '45'
+// console.log(ThisIsString);
+
+let testString = null + ''; //Неявне приведення типу до String
+// console.log(testString);
+
+//КРАЩЕ ВИКОРИСТОВУВАТИ ТІЛЬКИ ЯВНЕ ПРИВЕДЕННЯ!!!
+
+let test = 15 - Number('17');
+// console.log(test);
+
+//NaN - Not a Number
+
+let notANumber = 2 * 'Hello'; //Привкедення типів не можливе, відбувається некоректна математ операція і це приводить до NaN
+
+// console.log(notANumber);
+
+// ()- це оператор виклику функції 
+// математичні оператори (+ - * /)
+// оператор конкатенації
+// оператор typeof - дозволяє отримати тип операнда
+
+//Oператор typeof
+
+let box = true;
+console.log (typeof box); //ми "засунули typeof в () console.log"
