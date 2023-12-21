@@ -1,60 +1,14 @@
-//Змінна/variable
+let box1 = 'Hello';
 
-/*Cтворення змінної
+let box2; //undefined
 
-ключове-слово_ім'я-змінної (_пробіл)
-var (не рекомендовано, застарілий варіант deprecated)
-let - для змінної, яку ми потім можемо змінювати (перевизначати)
-const - оголошуємо змінну, і НЕ можемо змінювати вже нічого
+box2 = 15; //15
 
-*/
+//Змінна const має бути визначена
 
-let box; 
+const secretWord = 'syperSecret!Kyivstar!Cebersecuruti';
 
-// console.log(box); //undefined
+console.log(secretWord);
 
-// знак "=" оператор присвоєння
-
-box = 3.99995; //присвоєння - assign
-
-// console.log(box);
-
-//Можемо визначати значення змінної при її створенні
-
-let box2 = 'Hello world';
-
-// console.log(box2);
-
-box2 = 236;
-
-// console.log(box2);
-
-let isActive = true;
-let isLogged = false;
-let isRecording = false;
-isRecording = true;
-
-//присвоєння значення з іншої змінної 
-
-let x = 10;
-// let y;
-// y = x; //змінна y отримує значення змінної х (у = 10)
-// короткий варіант:
-let y = x;
-console.log(y); //10
-
-/*ПРАВИЛА НЕЙМІНГУ ЗМІННИХ:
-
-1.Використовуйте осмисленні та описові імена змінних.
-Наприклад:
-userName, age,totalAmount.
-
-2.Використовуємо camelCase у JS.
-3.Уникати використання однобуквенних або непояснюваних скорочень.
-Наприклад:
-х, y, zxc
-4. Уникайте пробілів та спец символів у назвах змінних.
-5. Заборонено починати назву змінної з цифри (можна використовувати, але не на почтаку)
-6. НЕ називається змінна так само як і назва методу.
-*/
-
+//Перевизначати const НЕ МОЖНА, браузер видає помилку Uncaught TypeError: Assignment to constant variable.
+// secretWord = 'wordd';
