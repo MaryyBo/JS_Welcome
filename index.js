@@ -16,16 +16,37 @@ function iм'я_Функції (аргумент1, аргумент2) {
 
 */ 
 
-function greetingUser (userName) {
-  // userName - абстракція, на якій ми зав'язуємо логку роботи функції
-  // userName - це формальний параметр
-  console.log('Hi, ' + userName);
-}
+// function greetingUser (userName) {
+//   // userName - абстракція, на якій ми зав'язуємо логку роботи функції
+//   // userName - це формальний параметр
+//   console.log('Hi, ' + userName);
+// }
 
 // Використання функції
 //Параметри, які ви передаєте при виклику функції - це фактичні параметри
 
-greetingUser ('Alex');
-greetingUser ('John'); // 'John' - Фактичний параметр
-greetingUser ('Sam');
-greetingUser ('Solar');
+// greetingUser ('Alex');
+// greetingUser ('John'); // 'John' - Фактичний параметр
+// greetingUser ('Sam');
+// greetingUser ('Solar');
+
+//Задача: Створіть функцію, яка приймає число, додає до нього 5 і виводить результат у консоль
+
+// function addFiveToNumber (number) {
+//   let result = number + 5;
+//   console.log(result)
+// }
+
+// addFiveToNumber (5)
+
+// /*Задача: Написати функцію , 
+// яка складає 2 числа і повертає результат розрахунку */
+
+// function addTwoNumbers( num1, num2) {
+//   console.log('Hi from function')
+//   const result = num1 + num2;
+//   return result; //Return - для повернення значень з функції. Функція припиняє роботу доходячи до return
+//   // console.log()
+// }
+// const functionResult = addTwoNumbers(2, 5)
+// console.log(functionResult);
