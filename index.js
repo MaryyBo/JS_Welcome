@@ -1,39 +1,33 @@
 
 
-/*Задача
-Дано правильний пароль = qwerty1234
-prompt
-Запитуйте у користувача пароль, через prompt, поки пароль. який вводить користувач, 
-не співпаде з еталонним 
+/*Loops - do - while 
 
-1 Варіант*/ 
 
-const correctPassword = 'qwerty1234';
+while - це цикл з ПЕРЕДумовою
+do - while - це цикл з ПІСЛЯумовою
 
-// let userPass = prompt('Введіть свій пароль');
-// // користувач в промт введе свій пароль, цей пароль запишеться у змінну userPass
 
-// while (userPass !== correctPassword) {
-//     userPass = prompt ('Помилка! Введіть пароль ще разюю.');
 
-// }
 
-// 2  Варіант*
-// while (true) {
-//     const userPass = prompt('Введіть свій пароль')
-//     if (userPass === correctPassword) {
-//         break; //якщо пароль співпадає, то виходимо з циклу (break)
-//     }
-// }
+Ми маємо виконати блок коду, гарантовано , завжди , потім перевіряємо умову, якщо умова
+буде true то ми знову виконуємо блок коду
 
-// 3  Варіант*
+do {
+    тут буде блок коду який буде циклічно виконуватись
+} while (умова)
 
-// let isPasswordCorrect = false;
-// while (!isPasswordCorrect) {//isPasswordCorrect === false - можно скоротити , поставивши знак оклику перед !isPasswordCorrect
-//     const userPass = prompt('Введіть свій пароль');
+*/
 
-//     if (userPass === correctPassword) {
-//         isPasswordCorrect = true;
-//     }
-// }
+ const correctPassword = 'qwerty1234'
 
+ let userPass;
+
+ do {
+    userPass = prompt ('Введіть свій пароль');
+ } while (userPass !== correctPassword);
+
+ /* До тих пір, поки пароль з prompt НЕ дорівнює сorrectPassword, ми будемо 
+ перевиконувати блок {
+    userPass = prompt ('Введіть свій пароль');
+ } 
+ */
