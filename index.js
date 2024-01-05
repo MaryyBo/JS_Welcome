@@ -1,35 +1,39 @@
 
-/* 
 
-LOOPS - Цикли
+/*Задача
+Дано правильний пароль = qwerty1234
+prompt
+Запитуйте у користувача пароль, через prompt, поки пароль. який вводить користувач, 
+не співпаде з еталонним 
 
-while (кількість _консоль_логів < 10) {
-  console.log(1);
-  кількість консоль_логів++ (збільшуєм на 1);
-}
+1 Варіант*/ 
 
-*/
+const correctPassword = 'qwerty1234';
 
-// let iterator = 0;
+// let userPass = prompt('Введіть свій пароль');
+// // користувач в промт введе свій пароль, цей пароль запишеться у змінну userPass
 
-// while (iterator < 10) {
-//   console.log(1);
-//   iterator++; //інкремени, збільшення на 1
+// while (userPass !== correctPassword) {
+//     userPass = prompt ('Помилка! Введіть пароль ще разюю.');
+
 // }
- 
-// Нескінченний цикл, якщо не ввести слово  break!!!
-while (true) {
-  console.log('Не вірно')
-  break;
-}
 
-// ЗАДАЧА: зробити 10 повторів (ітерацій циклу і вивести на консоль парні значення лічильника)
+// 2  Варіант*
+// while (true) {
+//     const userPass = prompt('Введіть свій пароль')
+//     if (userPass === correctPassword) {
+//         break; //якщо пароль співпадає, то виходимо з циклу (break)
+//     }
+// }
 
-let i = 0;
+// 3  Варіант*
 
-while ( i < 10) {
-  if (i % 2 === 0) {
-    console.log(i);
-  }
-  i++; // Для контролю його значення (збільшуємо або зменшуємо) або і +=2 
-}
+// let isPasswordCorrect = false;
+// while (!isPasswordCorrect) {//isPasswordCorrect === false - можно скоротити , поставивши знак оклику перед !isPasswordCorrect
+//     const userPass = prompt('Введіть свій пароль');
+
+//     if (userPass === correctPassword) {
+//         isPasswordCorrect = true;
+//     }
+// }
+
