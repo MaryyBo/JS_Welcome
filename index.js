@@ -1,20 +1,57 @@
+//Задача:
 
+/*
+Написати функцію , яка обчислює факторіал переданого ій числа, результат
+роботи функції вивести на консолью.
 
-/*Loops - for
+Факторіал - це 
+5! = 1*2*3*4*5
+10! 
 
-for (початковий стан лічильника; умова, за якої код повторюється; зміна лічильника на кожній ітерації)
-{блок коду, який повторюється
+Якщо число відємне - поверніть з функції помилку
+Якщо число = 0 , або = 1 - поверніть з функції 1
+В іншому випадку - знаходимо факторіал. 
 
-}
 
 */
-//Задача 1. Вивести 10 консоль логів 
 
- for ( i = 0; i < 10; i++) {
-    console.log(i);
- }
+function findFuctorial(number) {
+  let factorial = 1; // У цій змінній ми накопичуємо добуток
 
+  if (number < 0) {
+    throw Error('Number below 0 cant be factorial!');
 
-for ( i = 0; i < 10; i = i + 3) { // Виведеться 0 -- 3 -- 6 -- 9
-   console.log(i);
+  } else if (number !== 0 && number !== 1) { 
+    for(i = 1; i <= number; i++) {
+      factorial = factorial * i;
+    }
+  }
+
+  return factorial;
 }
+
+
+function findFuctorial2(number) {
+  let factorial = 1; // У цій змінній ми накопичуємо добуток
+
+  if (number < 0) {
+    throw Error('Number below 0 cant be factorial!');
+  } else if (number === 0 || number === 1) { 
+    return 1;
+  } else {
+    for(i = 1; i <= number; i++) {
+      factorial = factorial * i;
+    }
+  }
+
+  return factorial;
+}
+
+let number = 5;
+
+const result = findFuctorial(number);
+const result2 = findFuctorial2(number);
+
+
+console.log(result);
+console.log(result2);
