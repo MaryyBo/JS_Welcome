@@ -1,30 +1,21 @@
-//Щоб перебрати значення які є в цьому об'єкті "Поштучно" є цикл FOR...IN
 
-const user = {
-  email: 'john.doe@gmail.com',
-  name: 'Peter',
-  age: 20,
-  lastname: 'Doe',
-  'favourite color': 'red',
-  movie : 'Blue moon',
-  avatar : 'http:...'
-
-}
-
-// for... in вик-я для перебору (ітерацій) ключів в об'єкті 
 
 /*
-for (variable in object) {
-  код, що виконується для кожної властивості
-}
 
-variable - змінна, яка буде приймати значення ключів властивостей
-object - об'єкт, властивості (ключі) якого ми хочемо перебрати
-
+Задача: написати функцію, яка приймає об'єкт і виводить всі значення всіх властивостей, оформлені *...*
+А ключі - "..."
 
 */
-//Задача. У об'єкті user вивести назви всіх ключів і властивості під цими ключами
 
-for (let key in user) { //key - це і є variable 
-  console.log(`${key} ---> ${user[key]}`); 
+const obj = {
+  key1: 'value 1'
+}
+
+// "key1": *value1*
+
+
+function stylingObj (obj) {
+  for (let key in obj) {
+    console.log(`"${key}": *${obj[key]}*`);
+  }
 }
