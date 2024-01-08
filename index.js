@@ -1,44 +1,18 @@
- // [] = Обчислюввальні властивості для невалідних ідентифікаторв
-//  Невалідні ідентифікатори - коли починається з числа, або є пробіл
 
- const user = {
-  name : 'John',  //ключ name : значення 'John'
-  'favourite color' : 'red',
-  0: 'value',
- }
- // Ключем в об'єкті може бути рядок або тип даних Symbol
- // Ключ без лапок, JS автоматично оточує його лапками.
-
- console.log(user.name); //John
- console.log(user['favourite color']); // red
- console.log(user[0]); // value 
-
- // Валідні ідентифікатори доступ - .
- // Невалідні ідентифікатори доступ - []
-
- //////////////////////////////////////////////////////////////////////////
-
- const someObject = {
-  2: 10
- }
-
- console.log(someObject[2]);
-
- someObject[2] // VSC - допомагає
-
- /*Задача 1 
  
- Є об'єкт з різними версіями привітань для користувача
- Вивести кор-чу привітання, в залежності від значення , яке він ввів*/
 
- const greets = {
-  15: 'Hi',
-  17: 'Ya, what`s up!',
-  19: 'Hello',
-  30: 'Good morning!'
+//Чи є певний ключ?
+/*in - бінарний оператор (чи є в об'єкті певний ключ) повертає true/false
+ 'key' in obj
+*/
+
+const obj = {
+  Mon: 'drive lesson',
+  Tue: 'dantist visit',
+  Wed: 'go to party',
+  Thu: 'hard work',
+  Fri: 'chill',
+  Sat: 'go to park'
  }
 
- const valueFromUser = 19;
- console.log(greets[19]); // AБО
-
- console.log(greets[valueFromUser]);
+ console.log('Mon' in obj); // Mon - є в цьому об'єкті
