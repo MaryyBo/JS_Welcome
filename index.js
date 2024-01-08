@@ -1,47 +1,32 @@
-//Об'єкти
 
-  /* 
+//Об'єкт КІТ
 
-  const назваОб'єкту = {
-    ключ : значення
+
+const cat = {
+  name: 'Murzik',
+  color: 'Red',
+  breed: 'Dvorovyi',
+  age: 2,
+  eat: function () {
+    return 'I am eating'
+  },
+  sleep: function () {
+    return 'A am sleeping'
   }
+}
 
-  Об'єкти мають:
-   - властивості
-   - методи
-
-   const obj = {
-    color : 'white',
-    fontSize : 2
-   }
-
-  ООП - парадигма яка дозволяє створювати програми з використанням об'єктів
-  які мають властивості та методи 
-
-  Задача описати об'єкт ЛАМПОЧКА
-  */ 
-
-//   const bulb = {
-//     lightness: 200,
-//     power: '200W',
-//     cap: 'small',
-//     on: function (){ // анонімна функція юо в дужках пусто
-//         return 'The light on!';
-//     },
-//     off: function () {
-//         return 'The light off!';
-//     }
-//   }
-
-//   console.log(bulb.on()); // круглі дужки потрібні для виклику!
-//   console.log(bulb.lightness)
+cat.age = cat.age + 1; // Змінили вік кота з 2 на 3
 
 
-// Обє'кт dog
+//Якщо потрібно видалити якийсь метод чи властивість - Оператор delete
 
-  const dog = {
-    name: 'Tuzik',
-    'favorite food': 'meat',
-  }
-  console.log(dog.name);
-  console.log(dog ['favorite food']);
+// delete cat.sleep;
+
+// Adding Properties
+// Задача. Додати ім'я друга Мурзика до об'єкту Мурзина
+
+cat.friend = 'Tuzik'
+cat['favourite food'] = 'Fish'; // Додавання невалідного ідентифікатору (через пробіл)
+cat.meow = function () {
+  return 'meow meow meow!'
+}
