@@ -1,58 +1,101 @@
-/*Cтворити конструктор об'єктів для представлення книг з наступними властивостями
-- Назва книги, автор, рік видання, ціна
-- Спроектувати методи для отримання і встановлення значень властивостей*/
+/*
+Задача.
+Зробити функцію-конструктор Country, яка приймає в якості аргументів:
+- назва країни
+- популяція (population)
+- площа (area)
+Спроектувати метод густоти населення
+P.S. Густота наеселення = популяція цієї країни / площу цієї ж країни
+*/ 
 
-//ЗАДАЧА2. Зробити для всіх книг метод, який би повернув ціну книги, але зі знижкою
+// function Country (name, population, area) {
+// this.name = name;
+// this.population = population;
+// this.area = area;
+// this.getDencity = function () {
+// return this.population / this.area;
+// }
 
-function Book (title, author, year, price) {
-this.title = title;
-this.author = author;
-this.year = year;
-this.price = price;
+// }
 
-this.getTitle = function () {
-return this.title;
-} // Можем реалізувати якусь перевірку права доступу до властивості
-this.getAuthor = function () {
-return this.author;
-} // Можем реалізувати якусь перевірку права доступу до властивості
-this.getYear = function () {
-return this.year;
-} // Можем реалізувати якусь перевірку права доступу до властивості
-this.getPrice = function () {
-return this.price;
-} // Можем реалізувати якусь перевірку права доступу до властивості
+// let country1 = new Country ('Greese', 5674000, 704 );
+// let country2 = new Country ('United Kingdom', 67333000, 243610);
 
-this.setTitle = function (newTitle) {
-this.title = newTitle; //присвоїти нову назву (тут ще можуть бути перевірки по типу права доступу до властивості, або зміни назви)
-}
-this. setAuthor = function (newAuthor) {
-this.author = newAuthor;
-}
-this. setYear = function (newYear) {
-this.year = newYear;
-} // можна ще реалізувати , наприклад, якісь перевірки
-this. setPrice = function (newPrice) {
-this.price = newPrice;
-}
-this.culculateDiscauntedPrice = function (discountPercentage) {
-const discountedPrice = this.price - (this.price * (discountPercentage / 100));
-return discountedPrice;
-}
+// console.log(country2);
 
-}
+/*Задача 2
 
-const book1 = new Book ('Чотири вітри', 'Крістін Генна', 2020, 450)
+Зробити функцію-конструктор Авто, яке має:
+- назву
+- максимальну швидкість
+- поточну швидкість
+Спроектувати методи:
+- метод прискорення (accelearte) - приймає в якості аргумента певне прискорення
+Зауважте, що при прискоренні, поточна швидкісь не може бути більшою за максимальну швидкість
+- метод сповільнення (deaccelerate) - приймає в якості аргумента певне сповільнення
+Зауважте, що при сповільненні, поточна швидкість не може бути менше за 0
+- метод зупинки (stop)
+*/
 
-// console.log(book1.getTitle ());
-// console.log(book1.getAuthor());
-// console.log(book1.getPrice());
+// function Auto (name, maxspeed, currentspeed) {
+// this.name = name;
+// this.maxspeed = maxspeed;
+// this.currentspeed = 0;
 
-// book1.setTitle('New Title'); //Поміняли значення!
-// book1.setAuthor('New Author');//Поміняли значення!
-// book1.setYear(2025);          //Поміняли значення!
-// book1.setPrice (340);         //Поміняли значення!
+// this.accelearte = function (accelValue) {
+// this.currentspeed = this.currentspeed + accelValue;
 
-// 
-// console.log(book1.culculateDiscauntedPrice(70));
+// if (this.currentspeed > this.maxspeed) {
+// // return this.currentspeed;
+// this.currentspeed = this.maxspeed;
+// }
+// return this.currentspeed
 
+// }
+// this.deaccelearte = function (deaccelValue) {
+// this.currentspeed = this.currentspeed - deaccelValue;
+// if (this.currentspeed < 0) {
+// this.currentspeed < 0;
+// }
+// return this.currentspeed;
+// }
+
+// this.stop = function () {
+// this.currentspeed = 0;
+// return this.currentspeed;
+// }
+// }
+
+// const auto = new Auto ('Mercedes-Benz', 325, 0);
+
+//
+
+//Задача. Всередині Alert виконати математичний розрахунок: 2 + 2 = 4
+
+// alert ('2 + 2 = ' + (2 + 2)); 
+
+// Подвійні лапки: "Привіт"
+// Одинарні лапки: 'Привіт'
+
+// Зворотні лапки: `Привіт` - мають розширену функціональність 
+// Вирази укладаються в $ {...вираз...}
+// Рядки , які знаходяться у взоротніх лапках `` називаються шаблонними
+
+// const nickName = 'Вася';
+
+// // Задача: створити Alert і привітатись з Васею
+
+// // alert ('Привіт,' + nickName + '!'); //Ми можемо скоротити цей вираз з допомогою зворотніх лапок
+
+// // alert (`Привіт , ${nickName}!`);
+
+// // alert (`результат: ${1+2}`);
+
+// // Запитати у користувача 2 числа і вивести alert
+
+// const first = Number(prompt ('Enter first number'));
+// const second = Number(prompt ('Enter second number'));
+
+// // alert(String (first) + '+' + String (second) + '=' + String (first + second)); // 5 + 10 = 15
+
+// alert (`${first} + ${second} = ${first + second}`);
