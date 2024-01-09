@@ -1,116 +1,74 @@
+/*
+Маємо юзера , з номерами телефона*/
+
+// const userTelephone1 = '380632812409';
+// const userTelephone2 = '380649612474';
+// const userTelephone3 = '380649340902'; 
 
 
+//  //Ці змінні між собою не пов'язані ! А мають бути...
 
-// /*
-
-// Задача: у нас є об'єкт з зарплатами по всіх відділах.
-// Написати функцію, яка повертає загальну суму, витрачену на зарплатню всіх відділів
-
-// */
-
-// const departmentSalary = {
-//   HR: 120000,
-//   development: 5500000,
-//   PR: 50000,
-//   marketing: 120000,
-//   asisstant: undefined
-// }
-
-// function getTotalSalary(departmentSalaries) {
-//   let totalSalary = 0;
-
-//   for (let key in getTotalSalary) {
-
-//   }
-
-// }
-
-// // function sumOfWasteSalary(departmentSalary) {
-// //   let sum = 0;
-// //   let nameOfUndefined;
-// //   for (let key in departmentSalary) {
-// //     if (typeof departmentSalary[key] === "number") {
-// //       sum += departmentSalary[key];
-// //     } else {
-// //       nameOfUndefined = key;
-// //       console.log(
-// //         `You have undefined salary for depertment: ${nameOfUndefined}`
-// //       );
-// //     }
-// //   }
-
-
-
-// Задача: у нас є об'єкт з зарплатами по всіх відділах.
-// Написати функцію, яка повертає загальну суму, витрачену на зарплатню всіх відділів
-
-// */
-
-const departmentSalary = {
-  HR: 120000,
-  development: 5500000,
-  PR: 50000,
-  marketing: 120000,
-  // assistant: undefined
-}
-
-function getTotalSalary(departmentSalaries) { //departmentSalaries (абстракція) cтворюється окремо, компаний може бути багато
-
-  let totalSalary = 0; //тут ми накопичуємо сумму, до неї буде докидуватись на кожній наступній ітерації
-
-  for (let key in departmentSalaries) {
-
-    if (typeof departmentSalaries[key] === "number") { // плюс додає тільки числа, маємо перевірити чи є ключ числом
-
-      totalSalary += departmentSalaries[key] 
-    }
-  }
-
-  return totalSalary;
-
-}
-
-const totalSalary = getTotalSalary(departmentSalary)
-
-console.log(totalSalary)
-
-
-//Задача . Прийняти через prompt назву дня тижня і видати alert що заплановано у користувача на цей день
-
-// const obj = {
-//   Mon: 'drive lesson',
-//   Tue: 'dantist visit',
-//   Wed: 'go to party',
-//   Thu: 'hard work',
-//   Fri: 'chill',
-//   Sat: 'go to park'
+//  const userTelephones = {
+//   0: '380632812409',
+//   1: '380649612474',
+//   2: '380649340902'
 //  }
+   
+ // але об'єкти не надають нам можливості керувати порядком властивостей. 
+ // Для цього є Масив (Array)
+
+ // Оголошення масиву з використанням літералу  - [] 
+ // Коллекція чисел
+ // Перераховуються через кому, та знаходяться в квадрат дужках
+
+ // 1 спосіб
+
+ const arr = [2,4,6,7]; //синтаксичний спосіб над 2гим способом
+
+ // 2 спосіб використати Конструктор массивів  Array
+
+ const arr2 = new Array (2,4,6,7);
+
+/* 
+
+Тепер це упорядочена коллекція, що починається з 0 !!!
+- Можно звертатися до індексів масивy: 0,1,2,3; 
+- length - довжина массиву- для отримання кількості елементів у массиві або для перевірки чи пустий масив 
+- Порядок важливий (впорядкована структура даних)
+- Містить в собі данні, тому за типом даних массив - це ОБʼЄКТ
+- Щоб дістати , треба звернутися до массиву (arr) вказати [] всередині вказуємо індекс елементу, який нам потрібен
+- Можна присвоювати нові значення за допомогою оператора присвоєння = 
+(arr[0] = 200)
+
+ [0]      - зчитування значень
+ [0]= 200 - присвоєння значень
+
+*/
+
+//Задача. Вивести всі значення масиву в консолі
+
+//Автоматизувати повторювані дії можна використати цикл! наприклад for
+
+// for (let i = 0; i<= 3; i++) {
+
+// console.log(arr[i]);
+// }
+
+//якщо не знаємо скільки в масиві елементів!
+
+// for (let i = 0; i < arr.length; i++);
+
+// console.log(arr[i]);
 
 
-//  const getDay = prompt ('Enter the day of the week. \nFor example:\nMon \nTue \nWed \netc...');
+//Задача : у нас є масив чисел. Вивести на консоль тільки парні числа!
 
-//  alert (`${getDay}: ${obj[getDay]}` ); 1 variant
+const numberArray = [1,2,3,4,5,6,7,8,9,10]
 
-// alert (obj[getDay] ? obj[getDay] : 'Error');  2 variant
-
-
-//Задача : загорнути ключи в "..." а значення *....*
-
-const obj = {
-  Mon: 'drive lesson',
-  Tue: 'dantist visit',
-  Wed: 'go to party',
-  Thu: 'hard work',
-  Fri: 'chill',
-  Sat: 'go to park'
- }
-
-
-// "key1": *value1*
-
-
-function stylingObj (obj) {
-  for (let key in obj) {
-    console.log(`"${key}": *${obj[key]}*`);
+for (let i = 0; i<= numberArray.length; i++) {
+  
+      if (numberArray[i] % 2 === 0) {
+        console.log(numberArray[i]);
+      }
   }
-}
+
