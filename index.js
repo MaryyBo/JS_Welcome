@@ -46,30 +46,33 @@
 
 // */
 
-// const departmentSalary = {
-//   HR: 120000,
-//   development: 5500000,
-//   PR: 50000,
-//   marketing: 120000,
-//   asisstant: undefined
-// }
+const departmentSalary = {
+  HR: 120000,
+  development: 5500000,
+  PR: 50000,
+  marketing: 120000,
+  // assistant: undefined
+}
 
-// function getTotalSalary(departmentSalaries) {
-//   let totalSalary = 0;
+function getTotalSalary(departmentSalaries) { //departmentSalaries (абстракція) cтворюється окремо, компаний може бути багато
 
-//   for (let key in departmentSalaries) {
-//     if (typeof departmentSalary[key] === "number") {
-//       totalSalary += departmentSalaries[key]
-//     }
-//   }
+  let totalSalary = 0; //тут ми накопичуємо сумму, до неї буде докидуватись на кожній наступній ітерації
 
-//   return totalSalary;
+  for (let key in departmentSalaries) {
 
-// }
+    if (typeof departmentSalaries[key] === "number") { // плюс додає тільки числа, маємо перевірити чи є ключ числом
 
-// const totalSalary = getTotalSalary(departmentSalary)
+      totalSalary += departmentSalaries[key] 
+    }
+  }
 
-// console.log(totalSalary)
+  return totalSalary;
+
+}
+
+const totalSalary = getTotalSalary(departmentSalary)
+
+console.log(totalSalary)
 
 
 //Задача . Прийняти через prompt назву дня тижня і видати alert що заплановано у користувача на цей день
