@@ -1,59 +1,110 @@
-function saySomething (howToSay, whaToSay){
-  howToSay(whaToSay);
-}
 
-// saySomething (alert, 'Hello user');
-saySomething(console.log,'hi'); 
+// Задача 1
+// збільшити вік користувачів на 1
 
-//Функції вищого порядку (HOF) High Order Function - передаєм в якості аргументу інші функції 
-//сallback (функція зворотнього виклику)
+//   const users = [{
+//     name: 'John',
+//     lastName: 'Doe',
+//     age: 19,
+//     email: 'john.doe@gmail.com'
+// }, {
+//     name: 'Jane',
+//     lastName: 'Doe',
+//     age: 22,
+//     email: 'jane.doe@gmail.com'
+// }, {
+//     name: 'Jackson',
+//     lastName: 'Doe',
+//     age: 55,
+//     email: 'jackson.doe@gmail.com'
+// }]
 
- /*Метод array.forEach - використовується для перебору (ітерації) кожного елеменуту 
- масиву і виконаянн певної дії
- 
- array.forEach(callback)
- 
- */
-
- //Задача 1. Маємо масив чисел. Кожне значення цього масиву підвести до квадрату
-
- const array = [1, 2, 3, 4, 5];
-
-//  function square (a) {
-//   console.log(a*a)
-//  }
-
-// //  array.forEach(square); 
-
-//  for (let i; i < array.length; i++) { //Це теж сам ,що array.forEach(square);
-//   square (array [i]);
-//  }
-
-// array.forEach((item,index, array) => {});
-// => - cтрілова функція використовується саме у callback
-//item - текущий переглядаємий елем (послідовності аргументів змінювати не можно)
-// index, array - зазвичай НЕ ПОТРІБНІ
-
-// array.forEach((item) => {
-//   console.log(item*item)
+// users.forEach((user) => { //Цей код коротший
+//   user.age += 1;
 // });
 
-//ДОДАТКОВА ІНФОРМАЦІЯ --> const square = (num) => (num * num); // ми опускаємо  {} скобки та return так як у нас одна дія
+// console.log(users);
 
-/*Метод array.map() - створює/повертати НОВИЙ масив використовується для перебору (ітерації) кожного елеменуту 
- масиву і виконання певної дії.
- 
- */
- 
-//  function square (a) {
-//     return (a*a);
+// АБО переписати так як нижче!
+
+// function plusOneYear (item) { //item - це елемент масиву
+//   item.age += 1;
+// }
+// users.forEach (plusOneYear);
+// console.log(users);
+
+// Задача 2
+
+// Дано масив:
+
+// const array = [2, 44, 11, 234, 8, 2, 4, 1];
+
+// Задача:
+// Зробити новий масив, всі елементи якого = елемент зі старого масиву + 100
+
+// Варіант 1
+// const newArray  = array.map((item) => {
+//     return item + 100;
+// })
+
+// Варіант 2
+//  function plus100 (item) { 
+//     return item + 100;
 //   }
+// console.log(array.map(plus100)); // можно користуватись цим
 
-  // const newArray = array.map(square ); 
-  //Це можна переписати через стрількову функцію
 
-  const newArray = array.map((item) => {
-    return item * item;
-  })
+// Задача 3
+/* Cтворити новий масив користувачів, об'єкти мають бути у такому вигляді
+{
+  fullname: 'John Doe',
+  email: ....
+}
+*/
 
-  
+  const users = [{
+    name: 'John',
+    lastName: 'Doe',
+    age: 19,
+    email: 'john.doe@gmail.com'
+}, {
+    name: 'Jane',
+    lastName: 'Doe',
+    age: 22,
+    email: 'jane.doe@gmail.com'
+}, {
+    name: 'Jackson',
+    lastName: 'Doe',
+    age: 55,
+    email: 'jackson.doe@gmail.com'
+}]
+
+// 1 варіант
+
+// const usersNew = users.map((user) => ({
+//   fullname: `${user.name} ${user.lastName}`,
+//   email: user.email
+// }));
+
+// console.log(usersNew);
+
+// 2 варіант
+// function newUserObject (user) {
+//   return {
+//     fullName: `${user.name} ${user.lastName}`,
+//     email: user.email
+//   }
+// }
+
+// const newUsers1 = users.map(newUserObject);
+
+// 3 варіант
+
+// const newArrFromUsers = users.map((user) => {
+//   const newUser = { 
+//     fullName: `${user.name} ${user.lastName}`,
+//     email: user.email
+//   };
+//   return newUser;
+// });
+
