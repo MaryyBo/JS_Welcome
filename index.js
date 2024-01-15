@@ -1,37 +1,19 @@
-function t() {
-  
-  arguments [4] = 'testvalue' // ми переоприділили
-  console.log(arguments)
-}
-t(1 , 2, 3, 4, 5);
+/* Cтворити новий масив, кожен елемент якого = елемент зі старого масиву * 2 */
 
-// console.log(t); // є консольлог, а є консольдір
+const oldArray = [2, 3, 4 ,5 ,1, 2];
 
-// console.dir(t); // розгорнутий вид
-// arguments - не є масивом (псевдомасив), але його можно перетворити
+// const newArray = oldArray.map((item) => {
+//   return item * 2;
+// });
 
-// function sum (a, b) {
-//   console.log(arguments);
-//   return a + b;
-// }
+// /* Змінити порядок слідування елементів в масиві newArray на протилежний */
 
-// console.log(sum (2, 6, 3, 4, 5, 6, 7));
+// newArray.reverse ();
 
+/* Ці дві дії можна об'єднати chaining */
 
-//Задача: Написати функціяю, яка повертає суму БУДЬ-ЯКОЇ кількости переданих в неї аргументів
+const newArray = oldArray.map((item) => {
+  return item * 2;
+}).reverse().join(','); // chaining (map -> reverse -> join)
 
-// Задача: написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості переданих в неї аргументів
-
-function sum() {
-  const arrayArgs = Array.from(arguments);
-
-  let sum = 0;
-
-  for(let i = 0; i < arrayArgs.length; i++) {
-    sum += arrayArgs[i];
-  }
-
-  return sum;
-}
-
-console.log(sum(2, 2, 2, 2, 2, 100));
+// Потрібно зробити з масива рядочок розділений комами
