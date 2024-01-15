@@ -1,13 +1,42 @@
-/* аrray.reduce - використ для обчислення якогось ОДНОГО значення на основі всіх елементів масиву
-аrray.reduce - зводить всі елементи масиву до якогось одного результуючого значення (не мутуючий)
-аrray.reduce (сallback, initialValue)
-*/
 
- const numbersArray = [2, 3, 1, 2, 34, 21];
 
- // Задача: знайти суму numbersArray
+const dogArray = [{
+  nickname: 'Tuzik',
+  color: 'black',
+  weight: 3,
+  age: 2
 
- function reducer (accumulator, item) { //  тaccumulator - типу змінної де накоплюється сума
-  return accumulator + item;
- }
- const sum = numbersArray.reduce(reducer, 0); // 0 - це початкове значення з якого ми починаємо рахувати суму
+}, {
+  nickname: 'Dolly',
+  color: 'white',
+  weight: 5,
+  age: 3
+}, {
+  nickname: 'Fagot',
+  color: 'black',
+  weight: 9,
+  age: 5
+
+}, {
+  nickname: 'Stus',
+  color: 'black',
+  weight: 15,
+  age: 1
+
+}
+]
+
+//Задача : відсортувати собак за вагою на збільшення
+
+// dogArray.sort ((dog1, dog2) => {
+//   if (dog1.weight < dog2.weight) {
+//     return -1
+//   } else { 
+//     return 1
+//   }
+// })
+
+dogArray.sort((dog1, dog2) => {
+
+  return dog2.weight - dog1.weight ; // cортування у зворотньому порядку
+})
