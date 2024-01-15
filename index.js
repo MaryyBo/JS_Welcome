@@ -1,84 +1,50 @@
+function MyArray() {
+  this.length = 0;
 
+//   this.push = function(value) {
+//     // value - додати в КІНЕЦЬ масиву
+//     this [this.length] = value; 
+//     this.length++;
+//   } 
+//   return this.length
+// }
 
-const dogArray = [{
-  nickname: 'Tuzik',
-  color: 'black',
-  weight: 3,
-  age: 2
+// const arr = new MyArray();
+// arr.push (1);
+// arr.push (2);
 
-}, {
-  nickname: 'Dolly',
-  color: 'white',
-  weight: 5,
-  age: 3
-}, {
-  nickname: 'Fagot',
-  color: 'black',
-  weight: 9,
-  age: 5
+/*Перепишіть пуш таким чином, щоб пуш міг приймати та додавав 
+до масиву будь яку кількість переданих елементів */
 
-}, {
-  nickname: 'Stus',
-  color: 'black',
-  weight: 15,
-  age: 1
+this.push = function() {
+  // arguments - додати в КІНЕЦЬ масиву
+  for (let i = 0; i < arguments.length; i++) {
+      this[this.length] = arguments[i];
+      this.length++;
+  }
+  return this.length;
+}
+
+this.pop = function() {
+  if (this.length > 0) {
+    //  1. зберегти останній елемент
+     const lastItem = this[this.length - 1]; 
+     // 2. видалити останній елемент з масиву
+     delete this [this.length - 1];
+     // 3. зменшити довжину масиву на 1
+     this.length--;
+     // 4. повернути останній елемент
+     return lastItem
+  } else {
+    return undefined;
+  }
+}
+}
+
+const arr = new MyArray();
+arr.push(1);
+arr.push(3, 2, 5, 10, 12, 33);
+
+// ДЗ написати метод this.forEach = function (callback) {
 
 }
-]
-
-//Задача : відсортувати собак за вагою на збільшення
-
-// dogArray.sort ((dog1, dog2) => {
-//   if (dog1.weight < dog2.weight) {
-//     return -1
-//   } else { 
-//     return 1
-//   }
-// })
-
-// і навпаки 
-
-// dogArray.sort((dog1, dog2) => {
-
-//   return dog2.weight - dog1.weight ; // cортування у зворотньому порядку
-// })
-
-
-// Відсортувати собак від найстаршого до наймолодшого
-
-// 1 варіант розв'язку
-
-// dogArray.sort ((dog1, dog2) => {
-//   if (dog1.age > dog2.age) {
-//     return -1;
-//   } else {
-//     return 1;
-//   }
-// })
-
-// // 2 варіант розв'язку
-// dogArray.sort ((dog1, dog2) => {
-// return dog1.age - dog2.age; 
-// })
-
-// Задача 2 Відсіяти всіх собак окрім білих
-
-
-// 1 варіант розв'язку
-
-dogArray.filter ((dog) => {
-  if (dog.color === 'white') {
-  return true;
-} else {
-  return false
-}
-});
-
-
-
-// або 
-
-// dogArray.filter ((dog) => {
-//   return dog.color === 'white'
-// });
-
