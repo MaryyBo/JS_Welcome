@@ -15,17 +15,17 @@ const cat2 = {
 
 const catMethods = { //Прототип
   run: function () {
-    console.log('Cat is running');
+    console.log(`${this.name} is running`);
   },
   meow: function () {
-    console.log('Meow');
+    console.log(`${this.name} said meow!`);
     
   }
 }
 
 //Як прикрутити  catMethods до об'єкту cat
 
-cat.__proto__ = catMethods; //прототипне посилання
+cat.__proto__ = catMethods; //прототипне посилання без якої НЕ пов'яжуться між собою об'єкти cat, cat2, catMethods
 cat2.__proto__ = catMethods;
 
 /*console
