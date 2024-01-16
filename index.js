@@ -1,38 +1,54 @@
+/*Задача: створити функцію-конструктор для сходів. (ladder)
+Об'єкт має властивість:
+currentStair - сходинка, на якій ми зараз знаходимось. Початково = 0
 
-const cat = {
-  name: 'Barsik',
-  color: 'red',
-  age: 1
-  
+Має методи:   <<<--- .prototype
+up() - піднімає на сходинку вище
+down() - опускає на сходинку нижче
+showStair() - показує, на якій сходинці ми зараз знаходимось*/
+
+
+function Ladder() {      // Це конструктор!!!
+  this.currentStair = 0;
+
 }
 
-const cat2 = {
-  name: 'Murzik',
-  color: 'black',
-  age: 5
-  
+function MyLadderPrototype() {  //Об'кт з прототипом для нашої драбини
+ // Метод на одну сходинку вище
+ this.up = function() {
+  this.currentStair++;// інкрементуємо сходинку
+  return this; 
+};
+
+// Метод на одну сходинку нижче
+this.down = function() {
+      this.currentStair--;   
+      return this; //декрементує сходинку
+  };
+
+
+// Метод для  поточної сходинки
+this.showStair = function() {
+  return this.currentStair;
+}
 }
 
-const catMethods = { //Прототип
-  run: function () {
-    console.log(`${this.name} is running`);
-  },
-  meow: function () {
-    console.log(`${this.name} said meow!`);
-    
-  }
-}
 
-//Як прикрутити  catMethods до об'єкту cat
+Ladder.prototype = new MyLadderPrototype();
 
-cat.__proto__ = catMethods; //прототипне посилання без якої НЕ пов'яжуться між собою об'єкти cat, cat2, catMethods
-cat2.__proto__ = catMethods;
+const myLadder = new Ladder();
 
-/*console
-cat
-{name: 'Barsik', color: 'red', age: 1};
-cat2
-{name: 'Murzik', color: 'black', age: 5};
-cat.meow === cat2.meow
-true // одне посилання 
-*/
+// console.log(myLadder.up());
+// console.log(myLadder.up());
+// console.log(myLadder.up());
+// console.log(myLadder.down());
+// console.log(myLadder.showStair());
+
+// Використання методів об'єкта
+// myLadder.showStair(); //Поточна сходинка: 0
+// myLadder.up();
+// myLadder.showStair(); //Поточна сходинка: 1
+// myLadder.down();
+// myLadder.showStair(); //Поточна сходинка: 0
+
+console.log(myLadder.up().up().up().down().showStair());
