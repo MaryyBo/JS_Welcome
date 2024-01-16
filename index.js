@@ -39,12 +39,21 @@ this.pop = function() {
     return undefined;
   }
 }
+this.forEach = function(callback) {
+  for (let i = 0; i < this.length; i++) {
+    callback(this[i], i, this);
+  }
+}
 }
 
 const arr = new MyArray();
 arr.push(1);
 arr.push(3, 2, 5, 10, 12, 33);
 
-// ДЗ написати метод this.forEach = function (callback) {
 
-}
+//Відконсольлогувати квадрати кожного числа в масиві
+
+arr.forEach((item) => {
+  console.log(item * item) // або item **2 зведення до степені
+})
+
