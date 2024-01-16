@@ -1,54 +1,76 @@
-/*Задача: створити функцію-конструктор для сходів. (ladder)
-Об'єкт має властивість:
-currentStair - сходинка, на якій ми зараз знаходимось. Початково = 0
+// This в в різних контекстах
+// This в глобальній області видимості посилається на об'єкт Window 
 
-Має методи:   <<<--- .prototype
-up() - піднімає на сходинку вище
-down() - опускає на сходинку нижче
-showStair() - показує, на якій сходинці ми зараз знаходимось*/
+'use strict'; //директива для включення строгого режиму strict mode
+
+console.log(this);  //вказує на Window 
 
 
-function Ladder() {      // Це конструктор!!!
-  this.currentStair = 0;
+// Function declaration
 
+function test() { 
+  console.log(this); // коли включений 'use strict' то this в середині об'єкту чи функцію він не буде вказувати на глобальний об'єкт Window
+} // вказує на функцію ( мають свій власний контекст)
+
+test();
+
+//Function Expression
+
+const test2 = function() { 
+  console.log(this);   // вказує на  функцію ( мають свій власний контекст)
 }
 
-function MyLadderPrototype() {  //Об'кт з прототипом для нашої драбини
- // Метод на одну сходинку вище
- this.up = function() {
-  this.currentStair++;// інкрементуємо сходинку
-  return this; 
-};
+test2 ();
 
-// Метод на одну сходинку нижче
-this.down = function() {
-      this.currentStair--;   
-      return this; //декрементує сходинку
-  };
+console.log(this); // вказує на Window 
+
+// Весь код, оточений фігурними дужками - контекст виконання
+/* strict mode - запустив такий механізм , що у Function declaration та у Function Expression
+ з'являється свій власний контекст виконання.
+ Контекстом виконання ФУНКЦІЇ стає сама функція , а не глобальний об'єкт Window
+ 
+ */
+
+ // Arrow Function
+ const test3 = () => {  // вказує на Window 
+  console.log(this); 
+ }
+
+ test3();
+
+ /*Стрілочна функція не має свого власного контексту виконання, тому вони беруть найближчий доступний їм контекст, 
+ а це з глобальної області видимості - Window*/
 
 
-// Метод для  поточної сходинки
-this.showStair = function() {
-  return this.currentStair;
-}
-}
+
+ const newspaper = {
+  title: 'News, news, news...',
+  articles: [{
+    author: 'John Doe',
+    date: '23-08-2023',
+    text: 'lorem'
+  },{
+    author: 'Richard Doe',
+    date: '25-08-2023',
+    text: 'lorem'
+  },{
+    author: 'Sam Doe',
+    date: '25-08-2023',
+    text: 'lorem'
+  }],
+
+  showArticles: function() {
+    this.articles.forEach((item, index) => {  // this зараз вказує на об'єкт newspaper
+      console.log(`${this.title} ${index} - ${item.author}`)
+    })   
+  }
+ }
 
 
-Ladder.prototype = new MyLadderPrototype();
-
-const myLadder = new Ladder();
-
-// console.log(myLadder.up());
-// console.log(myLadder.up());
-// console.log(myLadder.up());
-// console.log(myLadder.down());
-// console.log(myLadder.showStair());
-
-// Використання методів об'єкта
-// myLadder.showStair(); //Поточна сходинка: 0
-// myLadder.up();
-// myLadder.showStair(); //Поточна сходинка: 1
-// myLadder.down();
-// myLadder.showStair(); //Поточна сходинка: 0
-
-console.log(myLadder.up().up().up().down().showStair());
+// showArticles: function() {
+//   this.articles.forEach(function(item, index){  // ОТРИМАЄМО ПОМИЛКУ ${this.title} не буде читатися, тому що функція має свій власний контекст виконання
+//     console.log(`${this.title} ${index} - ${item.author}`)
+//   })   
+// }
+// }
+ newspaper.showArticles();
