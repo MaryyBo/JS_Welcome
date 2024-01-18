@@ -31,13 +31,31 @@
 
 // Задача: Написати стрілочну функцію, яка сумує будь яку кількість чисел( rest оператор працює в стрілочниї функц)
 
-const arrowSum = (...restArrayOfNumbers) => {
-    let sum = 0;
-    for (let i = 0; i< restArrayOfNumbers.length; i++) {
-        sum += restArrayOfNumbers[i];
-    }
+// const arrowSum = (...restArrayOfNumbers) => {
+//     let sum = 0;
+//     for (let i = 0; i< restArrayOfNumbers.length; i++) {
+//         sum += restArrayOfNumbers[i];
+//     }
 
-    return sum; 
+//     return sum; 
+// }
+
+
+// Задача тепер написати варіант функціі arrowSum з використанням методу reduce (передати стрілковий callback)
+
+
+
+const arrowSum = (...restArray) => { // 1 варіант виконання 
+
+    const sum = restArray.reduce ((accumulator, currentValue) => {
+        return accumulator + currentValue;
+    }, 0);
+    return sum;
 }
+
+
+// const arrowSum = (...restArray) =>  // 2 варіант виконання  (максимально короткий)
+
+//     restArray.reduce ((accumulator, currentValue) => accumulator + currentValue, 0);
 
 
