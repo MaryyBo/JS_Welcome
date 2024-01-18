@@ -1,76 +1,53 @@
-// This в в різних контекстах
-// This в глобальній області видимості посилається на об'єкт Window 
+'use strict';
+// написати функцію суми 2 аргументів
 
-'use strict'; //директива для включення строгого режиму strict mode
-
-console.log(this);  //вказує на Window 
-
-
-// Function declaration
-
-function test() { 
-  console.log(this); // коли включений 'use strict' то this в середині об'єкту чи функцію він не буде вказувати на глобальний об'єкт Window
-} // вказує на функцію ( мають свій власний контекст)
-
-test();
-
-//Function Expression
-
-const test2 = function() { 
-  console.log(this);   // вказує на  функцію ( мають свій власний контекст)
+function sum (a, b) { // Function Declaration
+    return a + b;
 }
 
-test2 ();
+const sumArrow = (a ,b) => { // Arrow Function
+    return a + b;
+}
 
-console.log(this); // вказує на Window 
-
-// Весь код, оточений фігурними дужками - контекст виконання
-/* strict mode - запустив такий механізм , що у Function declaration та у Function Expression
- з'являється свій власний контекст виконання.
- Контекстом виконання ФУНКЦІЇ стає сама функція , а не глобальний об'єкт Window
- 
- */
-
- // Arrow Function
- const test3 = () => {  // вказує на Window 
-  console.log(this); 
- }
-
- test3();
-
- /*Стрілочна функція не має свого власного контексту виконання, тому вони беруть найближчий доступний їм контекст, 
- а це з глобальної області видимості - Window*/
+// Якщо функція виконує ОДНУ дію (щось повертає , return/ Ми можемо опустити слово return і прибрати фігурні дужки)
+const sumArrowVariant2 = (a ,b) => a + b;
 
 
-
- const newspaper = {
-  title: 'News, news, news...',
-  articles: [{
-    author: 'John Doe',
-    date: '23-08-2023',
-    text: 'lorem'
-  },{
-    author: 'Richard Doe',
-    date: '25-08-2023',
-    text: 'lorem'
-  },{
-    author: 'Sam Doe',
-    date: '25-08-2023',
-    text: 'lorem'
-  }],
-
-  showArticles: function() {
-    this.articles.forEach((item, index) => {  // this зараз вказує на об'єкт newspaper
-      console.log(`${this.title} ${index} - ${item.author}`)
-    })   
-  }
- }
+//Задача: Написати функцію, яка приймає число і зводить його у квадрат
 
 
-// showArticles: function() {
-//   this.articles.forEach(function(item, index){  // ОТРИМАЄМО ПОМИЛКУ ${this.title} не буде читатися, тому що функція має свій власний контекст виконання
-//     console.log(`${this.title} ${index} - ${item.author}`)
-//   })   
-// }
-// }
- newspaper.showArticles();
+// Коли у нас тільки один аргумент ми навіть можемо опустити круглі дужки
+const pow = number => number ** 2;   // pow - ступінь числа
+
+// АЛЕ, якщо функція не приймає аргументів взагалі, то круглі дужки ОБОВʼЯЗКОВІ ().
+
+
+//ФУНКЦІЯ КОНСТРУКТОР
+
+const SuperFunc = () => {
+    this.value = 'hello'; 
+}
+
+/*this - вказує на глобальну область видимості,не має свого контексту виконання, 
+тому не може бути використана у функціях конструкторах, не може бути стрілочною
+
+arguments - псевдомасив з аргументами , які ми передаємо нашій функції при виклику
+У стрілкової функції не має arguments */
+
+const t1 = function () { //Function expression
+console.log(arguments);
+
+}
+// const t2 = () => { //Cтрілочні функції не мають arguments , якщо викликати t2 буде помилка
+//     console.log(arguments);
+//     }
+
+
+t1('hello','world','!!!')
+
+/* Особливості стрілочних функцій:
+
+ 1. Стрілочна функція не має свого власного контексту виконання
+    ( вона буде завжди брати найближчий доступний , до якого зможе дістатися)
+ 2. Не може бути функцією конструктором.
+ 3. Не має колекції arguments */
