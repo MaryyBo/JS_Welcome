@@ -1,119 +1,48 @@
-/* Примітивні типи даних вони копіюються завжди за значенням і не мають властивостей і медотів.
- **Об'єкти можуть мати властивості та методи і вони завжди копіюються за посиланням
-**Примітиви займають менше місця ніж об'єкти, вони шідкі, лекгі. 
-**Коли ми викликаємо метод або властивість, створюється об'кт обгортка, ми отримуємо відповіть, а потім цей обгортка знищується, 
-і залишається лише примітив.
-** об'єкт обгортка для всіх ПРИМІТИВНИХ типів даних.
-*/
 
-/* АЛЕ!!!! JS дозволяє працювати з примітивами так само як із об'єктами! 
-І нище в прикладі ми бачимо метод .length*/
 
-/* Наприклад string.length - довжина рядка
+/* Задача 1
 
-console.log('hello'.length);
-string.charAt - для отримання  або через [дужки можна достукатись до елемента]
-const str1 = 'abracadabra'
-undefined
-str1.charAt(2)
-'r'
-*/
+Написати функцію checkSpam, яка повертає true, якщо переданий рядок містить слова 'xxx' або 'viagra'
+Якщо заборонених слів у рядку немає - повертається false
 
-// string.concat - для обєднання, конкатенації, 2 або більше рядків і повертає новий рядок
-// string.charCodeAT - для повернення кодової точки Unicode cимволу з рядка за вказаним ідентифік
-// string.toUpperCase - приводить рядок у верхній регістр (не мутуючий )
-// string.toLowerCase - приводить рядок у нижній регістр (не мутуючий )
-
-/* string.includes(searchString,[position]) - чи міститься ПІДрядок у рядку, вертає true/false
-let str ='hello'
-str.includes('he') - true
-*/
-
-/* string.indexOf() - викорис для отримання індексу ПЕРШОГО входження
- ПІДрядка в рядку (або опвретає індекс перошо входження, або -1 якщо рядок не знайдено) 
-
- let str = 'abracadabra'
-str.indexOf('b')
-1 - індекс ПЕРШОГО входження букви 'b'
-
-str.indexOf('ac')
-3 - індекс ПЕРШОГО входження букви 'ac'
- */
-
-/* string.repeat() - для повтору рядка задану кількість разів і повертає новий рядок який складається з повторень вихідного рядка
-
-let str = 'abracadabra'
-str.repeat(5)
-*/
-
-/* string.replace() - для заміни частини рядка іншим рядком або регулярним виразом 
-(цим методом ще можно видаляти, вказавши в 2ий аргумент пустоту )
-
-str.replace('abra', 'cat'); 'abra' змінили на  'cat'--> отримали - 'catcadabra'
+checkSpam('buy ViAgRa now'); // true
+checkSpam('free xxxxxxx'); // true
+checkSpam('innocent rabbit'); // false
 
 */
 
-/* string.slice(beginIndex , [endIndex]) - для вибору частини рядка за допомогою вказаних індексів
-beginIndex - включно
-[endIndex] - не включно
+//  // Varian 1
 
-*/
+// function checkSpam(inputString) {
+//     // Переводимо рядок в нижній регістр для врахування всіх варіантів написання слів
+//     const lowerCaseInput = inputString.toLowerCase();
+    
+//     // Перевірка на наявність заборонених слів
+//     return lowerCaseInput.includes('xxx') || lowerCaseInput.includes('viagra');
+// }
 
-/* string.trim - для видалення пробілів з початку і кінця рядка
+// console.log(checkSpam('buy ViAgRa now')); // true
+// console.log(checkSpam('free xxxxxxx')); // true
+// console.log(checkSpam('innocent rabbit')); // false
 
-const text = '    text text text   ';
-
-text.trim();
-'text text text'
-*/
-
-/* string.split -  для розбивки вихідного рядка на підрядки використовуючи роздільник,сепаратор,
- як точку розриву між підрядками, і повертає маси що складається з цих підрядків 
-
-const testStr = 'hi hi hi';
-
-testStr.split(' '); отримаємо масив 
-(3) ['hi', 'hi', 'hi']
-
-*/
+// console.log(this);
 
 
-let str = 'abracadabra'
-console.log(str.toUpperCase());
+ // Varian 2 (якщо заборонених слів буде більше)
 
-//Boolean 
-// метод .toString - приводить булевий метод до строки.
+function checkSpam(str) { 
+    const spamArray = ['viagra','xxx','drugs']
+    for (let i = 0; i< spamArray.length; i++){
+        if (str.toLowerCase().includes(spamArray[i])=== true) {
+            return true;
+        }
+    }
+    return false;
+}
 
-const bool = true; // bool - boolean
-
-console.log(bool.toString()); // метод .toString приводить до строки
-
-
-// null/ undefined - не мають об'єктів обгорток
-
-
-// Number - об'єкт обгортка (Все що записано ВЕЛИКИМИ ЛІТЕРАМИ є константою)
-// number.isIntenger - перевірити че є передане значення цілим числом
-// number.is.NuN - для перевірки значення на NuN
-// number.toFixed() - для округлення чисел (вказуємо скільки знаків після коми нам треба) - буде завжди повертати рядок!
+console.log(checkSpam('buy ViAgRa now')); // true
+console.log(checkSpam('free xxxxxxx')); // true
+console.log(checkSpam('innocent rabbit')); // false
 
 
 
-
-// Дано номер телефону, додати частку +38
-
-let number = '0632816385' ; //ми можемо з номеру створити масив
-
-const arrayFromNumber = Array.from(number);
-
-arrayFromNumber.unshift('+', '3', '8');
-
-number = arrayFromNumber.join('');
-
-
-
-// Дано рядок, перевернути його
-
-let word = 'table';
-
-word = Array.from (word).reverse().join(''); // отримаємо перевернутий масив а потім рядок .join('')
