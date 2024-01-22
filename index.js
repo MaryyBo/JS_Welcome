@@ -1,33 +1,53 @@
-/* Задача 2
+const date = new Date(); // за замовченням буде стоврена поточна системна дата та час
+const date1 = new Date ('12-31-2023');
+/* Ми можемо самостійно передати дату яка нам потрібна 
+ (за американським форматом)
 
-// Написати функцію, яка перевіряє, чи є переданий їй рядок - паліндромом. не зважаючи на регістр
-// Паліндром - це коли рядок з обох сторін читається однаково
+new Date ('12-31-2023')
+Sun Dec 31 2023 00:00:00 GMT+0100 (Central European Standard Time)*/
 
-// Anna - паліндром
-// Mama - не паліндром
-// Namman
+console.log(date1.getDate()); // 31 
 
-// */
+console.log(date1.getDay()); // 0 (Отримання дня тижня з дати. В америці дні починаються з Неділі - 0, понеділок -1, вівторок - 2)
+
+console.log(date1.getFullYear()); // 2023 показує рік з дати.
+
+console.log(date.getHours()); // Покаже поточний час (годину) з дати
+
+console.log(date.getMinutes()); // Поверне хвилини (це так само працює з секундами getSeconds)
+
+console.log(date.getTime()); // Кількість мілісекунд що пройшли з 01 січня 1970 року (1705942962936 - Unix time)
 
 
-function checkPalindrom (str) {
-    /*
-    1.Приймаємо строку від користувача
-    2. Приводимо строку до нижнього регістру
-    3. Перевернути строку
-    4. Порівнюємо перевернуту строку з пункту 3 з оригінальною строкою 
-    */
-   // Реалізація 1 та 2 пунктів
-    const originalStr = str.toLowerCase()
+// Задача : знайти суму першого одного 1000000 чисел
 
-     // Реалізація 3 пункту  (зробити спочатку масив зі строки)
-    const reversedStr = originalStr.split('').reverse().join('');
-    console.log(originalStr);
-    console.log(reversedStr);
-    // Реалізація 4 пункту
+let sum = 0;// 1. Створюємо змінну
+const time1 = new Date(); // Відрізок часу до початку операціі 2
 
-    return originalStr === reversedStr;
-} 
+for (let i = 0; i <= 1000000; i++){ // 2. Накопичуємо суму
+    sum += i;
+}
 
-console.log(checkPalindrom ('Papa')); //false
-console.log(checkPalindrom ('Anna')); // true
+const time2 = new Date(); // Відрізок часу після операціі 2
+
+console.log(sum); // 500000500000  // 2. Консолимо суму
+
+
+console.log(time2.getTime() - time1.getTime()); // 13 мілісекунд на обробку ітерацій (результат буде постійно різний)
+/*time1
+Mon Jan 22 2024 18:14:23 GMT+0100 (Central European Standard Time)
+time2
+Mon Jan 22 2024 18:14:23 GMT+0100 (Central European Standard Time)*/
+
+
+
+//console.time - виміряти час виконання певного коду ( запускаємо таймер, даємо йомунґ назву)
+
+console.time('operation'); // Включили таймер
+
+let sum2 = 0;
+for (let i = 0; i <= 1000000; i++){ // 2. Накопичуємо суму
+    sum += i;
+}
+
+console.timeEnd('operation'); // Зупинити таймер
