@@ -1,48 +1,33 @@
+/* Задача 2
+
+// Написати функцію, яка перевіряє, чи є переданий їй рядок - паліндромом. не зважаючи на регістр
+// Паліндром - це коли рядок з обох сторін читається однаково
+
+// Anna - паліндром
+// Mama - не паліндром
+// Namman
+
+// */
 
 
-/* Задача 1
+function checkPalindrom (str) {
+    /*
+    1.Приймаємо строку від користувача
+    2. Приводимо строку до нижнього регістру
+    3. Перевернути строку
+    4. Порівнюємо перевернуту строку з пункту 3 з оригінальною строкою 
+    */
+   // Реалізація 1 та 2 пунктів
+    const originalStr = str.toLowerCase()
 
-Написати функцію checkSpam, яка повертає true, якщо переданий рядок містить слова 'xxx' або 'viagra'
-Якщо заборонених слів у рядку немає - повертається false
+     // Реалізація 3 пункту  (зробити спочатку масив зі строки)
+    const reversedStr = originalStr.split('').reverse().join('');
+    console.log(originalStr);
+    console.log(reversedStr);
+    // Реалізація 4 пункту
 
-checkSpam('buy ViAgRa now'); // true
-checkSpam('free xxxxxxx'); // true
-checkSpam('innocent rabbit'); // false
+    return originalStr === reversedStr;
+} 
 
-*/
-
-//  // Varian 1
-
-// function checkSpam(inputString) {
-//     // Переводимо рядок в нижній регістр для врахування всіх варіантів написання слів
-//     const lowerCaseInput = inputString.toLowerCase();
-    
-//     // Перевірка на наявність заборонених слів
-//     return lowerCaseInput.includes('xxx') || lowerCaseInput.includes('viagra');
-// }
-
-// console.log(checkSpam('buy ViAgRa now')); // true
-// console.log(checkSpam('free xxxxxxx')); // true
-// console.log(checkSpam('innocent rabbit')); // false
-
-// console.log(this);
-
-
- // Varian 2 (якщо заборонених слів буде більше)
-
-function checkSpam(str) { 
-    const spamArray = ['viagra','xxx','drugs']
-    for (let i = 0; i< spamArray.length; i++){
-        if (str.toLowerCase().includes(spamArray[i])=== true) {
-            return true;
-        }
-    }
-    return false;
-}
-
-console.log(checkSpam('buy ViAgRa now')); // true
-console.log(checkSpam('free xxxxxxx')); // true
-console.log(checkSpam('innocent rabbit')); // false
-
-
-
+console.log(checkPalindrom ('Papa')); //false
+console.log(checkPalindrom ('Anna')); // true
