@@ -1,53 +1,50 @@
-const date = new Date(); // за замовченням буде стоврена поточна системна дата та час
-const date1 = new Date ('12-31-2023');
-/* Ми можемо самостійно передати дату яка нам потрібна 
- (за американським форматом)
+/*Задача 1
 
-new Date ('12-31-2023')
-Sun Dec 31 2023 00:00:00 GMT+0100 (Central European Standard Time)*/
+Знайти факторіал числа
 
-console.log(date1.getDate()); // 31 
+5! = 5*4*3*2*1 = 120
+*/
 
-console.log(date1.getDay()); // 0 (Отримання дня тижня з дати. В америці дні починаються з Неділі - 0, понеділок -1, вівторок - 2)
-
-console.log(date1.getFullYear()); // 2023 показує рік з дати.
-
-console.log(date.getHours()); // Покаже поточний час (годину) з дати
-
-console.log(date.getMinutes()); // Поверне хвилини (це так само працює з секундами getSeconds)
-
-console.log(date.getTime()); // Кількість мілісекунд що пройшли з 01 січня 1970 року (1705942962936 - Unix time)
-
-
-// Задача : знайти суму першого одного 1000000 чисел
-
-let sum = 0;// 1. Створюємо змінну
-const time1 = new Date(); // Відрізок часу до початку операціі 2
-
-for (let i = 0; i <= 1000000; i++){ // 2. Накопичуємо суму
-    sum += i;
+function findFactorial (number) {
+    if (number === 1) {
+        return 1;
+    } else {
+        return number * findFactorial(number - 1);
+    }
 }
 
-const time2 = new Date(); // Відрізок часу після операціі 2
-
-console.log(sum); // 500000500000  // 2. Консолимо суму
-
-
-console.log(time2.getTime() - time1.getTime()); // 13 мілісекунд на обробку ітерацій (результат буде постійно різний)
-/*time1
-Mon Jan 22 2024 18:14:23 GMT+0100 (Central European Standard Time)
-time2
-Mon Jan 22 2024 18:14:23 GMT+0100 (Central European Standard Time)*/
 
 
 
-//console.time - виміряти час виконання певного коду ( запускаємо таймер, даємо йомунґ назву)
+/*
+Задача 2 (*)
 
-console.time('operation'); // Включили таймер
+Описати знаходження послідовності чисел Фібоначчі:
+F(n) = F(n-1) + F(n-2)
 
-let sum2 = 0;
-for (let i = 0; i <= 1000000; i++){ // 2. Накопичуємо суму
-    sum += i;
+Іншими словами, наступне число є сумою двох попередніх.
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987....
+
+0
+1
+0+1=1 // 1 число Фібоначчі F(1) = 1 + 0 = 1
+1+1=2 // 2 число Фібоначчі F(2) = 1 + 1 = 2
+1+2=3 // 3 число Фібоначчі F(2) = 2 + 1 = 3
+2+3=5 // 4 число Фібоначчі F(2) = 3 + 2 = 5
+3+5=8 // 5 число Фібоначчі F(2) = 5 + 3 = 8
+
+*/
+
+function findFibonacchi (n) {
+    if (n === 0) {
+        return 0;
+    }
+
+    if (n === 1) {
+        return 1;
+    }
+
+    return findFibonacchi(n - 1) + findFibonacchi(n - 2);
+    
 }
-
-console.timeEnd('operation'); // Зупинити таймер
