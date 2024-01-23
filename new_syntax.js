@@ -1,42 +1,25 @@
+
+
 /*
-тіло класу - все що в середині
-
-class MyClass {
-    //методи класу
-    constructor () {
-
-    }
- method1() {...}
- method2() {...}
- method3() {...}
-
-}
-// Щоб стоврити новий об'єкт з усіма перерехованими методами
-
-const user = new MyClass();
+Написати клас Worker.
+У працівника є ім'я, прізвище, ставка за робочий день і кількість відпрацьованих днів у цьому місяці
+Метод, який повертає зарплатню цього робітника за поточний місяць
 
 */
-
-class User {
-    constructor (name, lastName, age) {
+class Worker {
+    constructor (name, lastName, daySalaryRate, workedDays) {
         this.name = name;
         this.lastName = lastName;
-        this.age = age;
+        this.daySalaryRate = daySalaryRate;
+        this.workedDays = workedDays;
     }
-    getFullName () {
-        return `${this.name} ${this.lastName}`;
-    }
+    getMonthSalary () {
+        return this.daySalaryRate * this.workedDays;
+}
 }
 
-const user1 = new User('Alex', 'Dane', 20);
-const user2 = new User('Dari', 'Dane', 23);
 
+const worker1 = new Worker("Alex", "Dane", 150, 20);
+const worker2 = new Worker('Dari', 'Dane', 130, 23);
 
-/*
-Правила класів
-
-1. constructor() при cтворенні класів ОБОВʼЯЗКОВИЙ
-2. Ми не можемо самостійно звернутись до constructor (визивається оператором new - один раз)
-3. У класа constructor має бути тільки ОДИН
-4. Як і у функціях - конструкторах назва класу ЗАВЖДИ з ВЕЛИКОЇ літери
-*/
+// console.log(`${this.name} ${this.lastName} отримав зарплатню ${this.getMonthSalary()} за поточний місяць.`);
