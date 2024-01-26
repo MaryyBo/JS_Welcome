@@ -1,30 +1,70 @@
-
-class Animal { // батьківський класс
-    constructor (nickname, color) {
-        this.nickname = nickname;
-        this.color = color;
+class User {
+    constructor(name, surname, age) {
+        
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
     }
-
-    eat () {
-        return `${this.nickname} is eatng`
-    }
-}
-
-
-// class Dog extends Animal клас Собаки розширює клас Тварини (наслідує цей клас)
-
-class Dog extends Animal { // extend - для створення наслідування між класами
-    constructor (nickname, color) { //дочірній клас
-       super (nickname,color) // для виклику конструктора його батьківського класу - Animal
-    }
-
-    eat () {
-        return `${this.nickname} is eatng`; //метод eat вже не треба, так , як він є у Animal
-    }
-
-    gav () {
-        return `${this.nickname} gav gav gav `;
+    
+    getFullName () {
+        return `${this.name} ${this.surname}`;
     }
 }
 
-const dog = new Dog ('Tuzik', 'grey');
+
+class Moderator extends User {
+    constructor (name, surname, age) {
+        super (name, surname, age);
+    }
+
+    getFullName () {
+        return `${this.name} ${this.surname} ---> ${this.age}`;
+    }
+
+    createPost () {
+        console.log('Post seccessfully created')
+    }
+
+    deletePost () {
+        console.log('Post seccessfully deleted')
+    }
+}
+
+class Admin extends Moderator {
+    constructor (name, surname, age, uniquePrefix) {
+        super (name, surname, age);
+        this.uniquePrefix = uniquePrefix // унікальна властивість!Бо це Адмін
+    }
+
+    // getFullName () {  // ЯКЩО Я НЕ ХОЧУ ВИТЯГАТИ ВІК ДЛЯ Admin треба перевизначити функццію
+    //     return `${this.name} ${this.surname}`;
+    // }
+
+    makeModerator (userId) {
+        console.log('Moderator seccessfully set')
+    }
+
+    deleteModerator (userId) {
+        console.log('Moderator seccessfully deleted')
+    }
+
+}
+
+    class Support extends Admin {
+        constructor (name,uniquePrefix) {
+            super (name, null, null, uniquePrefix );
+        }
+
+        getFullName () {
+            return `${this.name} ---> ${this.uniquePrefix}`;
+        }
+    }
+
+const user = new User ('John', 'Doe', 32)
+const moderator = new Moderator ('Alex', 'Craine', 56)
+const admin = new Admin ('Max', 'Stew',45, 'Head of Sales')
+const support = new Support ('William', 'Head of Support')
+
+
+// Модератори, ті ж самі юзери , але вміють або можуть створювати пости на сайті і удаляти ії
+// Адміни - можуть призначати модераторів (юзери що мають все те що є у юзера, вміють робити все те, що роблять моератори + щось своє)
