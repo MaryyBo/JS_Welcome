@@ -1,223 +1,101 @@
-/* Задача:
+//Успадкування - здатність до копіювання
 
-Клас Людина та похідний клас Студент
-
-1. Базовий клас Людина з такими властивостями:
-
-- ПІБ
-- Дата Народження
-- Стать
-
-2. Похідний клас Студент, який наслідує властивості класу Людина.
-Додаткові властивості: 
-
-- Рік вступу
-- Номер залікової книжки
-- середній бал
-
-3. Наступні методи для реалізації:
-
-В класі Людина:
-
-- greeting () - повертає привітання для людини, в залежності від її статі (Mr. або Mrs)
-
-В класі Студент:
-
-- isExcellentStudent () - перевіряє , чи є студент відмінником на основі середнього балу
-Якщо середній бал вищий або рівний 90 , то метод поверне true, в іншому випадку  false
-
-*/
-
-class Person {
-    constructor (fullName, birthYear,gender) {
-        this.fullName = fullName;
-        this.birthYear = birthYear;
-        this.gender = gender;
+class Figure {
+    constructor (sideQuantity) {
+        this.sideQuantity = sideQuantity;
     }
 
-    //setter
-
-    set fullName(value) {
-        if (typeof value !== 'string') {
-    throw new TypeError ('Fullname must be a string');
-}
-        this._fullName = value;
+    get sideQuantity() {
+return this._sideQuantity;
 
     }
 
-    set birthYear (value) {
-        // Тут по хорошому потрібно ВАЛІДУВАТИ дату!!! (Ми цього ще не вчили)
-        this._birthYear = value
-    }
-
-    set gender (value) {
-        if (typeof value !== 'string') {
-            throw new TypeError ('Gender must be a string');
+    set sideQuantity (newValue) {
+        if (newValue < 0) {
+            throw new RangeError('Side quantity cannot be less than o')        
         }
-
-        this._gender = value;
+        this._sideQuantity = newValue;
     }
 
-    // getter
+    getArea () {
 
-    get fullName () {
-        return this._fullName;
-    }
-
-    get birthYear () {
-        return this._birthYear;
-    }
-
-    get gender () {
-        return this._gender;
-    }
-
-    // Methods
-
-    greeting () {
-        let prefix; // у цю змінну будемо класти або Mr або Mrs  взалежності від статі, тому вона і let змінна
-if (this.gender === 'male') {
-    prefix = 'Mr';
-
-} else if (this.gender === 'female') {
-    prefix = 'Mrs';
-
-} else {
-    prefix = prompt ('How should we address you?');
-}
-return  `'Hello' ${prefix} ${this.fullName}`;
     }
 }
 
-
-class Student extends Person {
-    constructor (fullName, birthYear,gender, admissionYear, studentId, avarageGrade) {
-        super (fullName, birthYear,gender);
-
-        this.admissionYear = admissionYear;
-        this.studentId = studentId;
-        this.avarageGrade = avarageGrade;
+class Triangle extends Figure {
+    constructor(a, b, angle) {
+        super(3);
+        this.a = a;
+        this.b = b;
+        this.angle = angle;
+        
     }
 
-    set admissionYear(value) {
-        this._admissionYear = value
+    get a() {
+        return this._a;
     }
-
-    set studentId (value) {
-        this._studentId = value;
-    }
-
-    set avarageGrade (value) {
-        if (typeof value !== 'number') {
-            throw new TypeError ('avarage Grade must be a number')
+     
+    set a(newValue) {
+        if (newValue < 0) {
+            throw new RangeError('Side cannot be less than o')        
         }
-        if (value > 100 || value < 0) {
-            throw new RangeError('avarage Grade must be [0;100;]')
+        this._a = newValue;
+    }
+
+
+    get b() {
+        return this._b;
+    }
+     
+    set a (newValue) {
+        if (newValue < 0) {
+            throw new RangeError('Side cannot be less than o')        
         }
-        this._avarageGrade = value;
-    }
- 
-    // getter
-    get admissionYear() {
-        return this._admissionYear
+        this._b = newValue;
     }
 
-    get studentId () {
-        return this._studentId;
-    }
-    get avarageGrade () {
-        return this._avarageGrade;
+    get angle() {
+        return this._angle;
     }
 
-    isExcellentStudent (){
-
-        // 1 варіант
-
-        // if (this.avarageGrade >= 90) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-
-        // 2 варіантабо через Тернарний оператор!!
-
-    //    const result = this.avarageGrade >= 90 ? true : false;
-    //    return result;
-
-        // 3 варіант  (максимальне скорочення)
-        return this.avarageGrade >= 90;
+    set angle(newValue) {
+        if (newValue < 0) {
+            throw new RangeError('Side cannot be less than o') 
     }
-
-    /*
-    1. створюємо сеттер для поля
-    2. використовуємо сеттуер у конструкторі
-    3. створюємо геттер
-    */
-
-    // Варіант 1
-    static studentAverageGrade(students) {
-    
-        const totalGrades = students.reduce((accumulator, currentValue) => accumulator + currentValue.avarageGrade, 0);
-        const averageGrade = totalGrades / students.length;
-    
-        return averageGrade;
-    }
-
-    
+    this._angle = newValue;
 }
 
-    // Варіант 2
-
-//     static calculateAverageGrade(studentsArray) { // можна переписати через forEach ??
-
-//         if (studentsArray.length === 0) {
-//             return 0; // перевірки, які можна було б зробити
-//         }
-//         //Перевірка на те, чи об'єкт всередині масиву students є екземпляром класу Student!!!(Але це пізніше)
-
-//         let sum = 0;
-// for(let i = 0; i < studentsArray.length; i++) {
-//     sum += studentsArray[i].avarageGrade;
-// }
-
-// return sum / studentsArray.length;
-
-//     }
-// }
-
-// варіант 3
-// let sum = 0;
-// studentsArray.forEach (student => {
-//     sum += student.avarageGrade;
-// });
-// return sum / studentsArray.length;
-
-// const person = new Person ('Іванов Іван Іванович', 1985, 'male');
-// const person2 = new Person ('Петров Петр Петрович', 1985, 'non Binary');
-
-const student1 = new Student ('Махно Сидр Сидорович', 1990, 'male', 2021, 'A12-34-AF', 95);
-const student2 = new Student ('Карапаскал Ирина Сидоровна', 1993, 'female', 2019, 'A12-45-AF', 85);
-const student3 = new Student ('Іванова Катерина Михайлівна', 1987, 'female', 2021, 'A12-84-AF', 77);
-const student4 = new Student ('Іваков Андрій Олексійович', 1996, 'male', 2020, 'A14-04-AF', 89);
-
-const students = [student1,student2,student3,student4];
+    getArea() {
+        return this.a * this.b * Math.sin(this.angle);
+    }
 
 
-const averageGrade = Student.studentAverageGrade(students);
 
-console.log(`Середній бал студентів: ${averageGrade}`);
-
- // Варіант 2
-
-// const averageGrade = Student.calculateAverageGrade(students);
-
-// console.log(`Середній бал студентів: ${averageGrade}`);
+}
 
 
-/*Домашня робота
 
-Реалізувати статичний метод в класі Students
+class Square extends Figure {
+    constructor (a) {
+        super (4);
+        this.a = a;
+    }
 
-Цей метод приймає масив єкземплярів класу Students (166 строчка) обчислює і повертає як результат роботи середній бал всіх студентів з масиву*/
+    get a() {
+        return this._a;
+    }
+
+    set a (newValue) {
+        if (newValue < 0) {
+            throw new RangeError('Side cannot be less than o')        
+        }
+        this._a = newValue;
+    }
 
 
+    getArea () {
+        return this.a * this.a; // this.a **2
+    }
+}
+
+const square = new Square(4);
