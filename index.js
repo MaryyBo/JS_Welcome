@@ -1,13 +1,29 @@
 
+/*Дано два масиви:
 
- //Задача: 
+const arr1 = [4, 3, 7, 5, -11];
+const arr2 = [3, 4, 8, 7, 2, -11];
 
- const arrWithDoubles = [2, 3, 3, 5, 6, 77, 77, 5, 1, 1, 12, 12, 13]
- // повернути масив без повторень
+Повернути з функції масив, що складається з різниці двох масивів (тобто, тих значень, які не повторюються в обох масивах)
 
-//  const uniqueArr = new Set(arrWithDoubles);
+// Логіка:
+Ви приймаєте 2 масиви
+Вам потрібно зробити новий масив, але там не повинно бути дублювань
+*/
 
- const newArr = [...new Set(arrWithDoubles)];
+const arr1 = [4, 3, 7, 5, -11];
+const arr2 = [3, 4, 8, 7, 2, -11];
 
-console.log(newArr);
 
+function twoArraysWithoutDoubles  (arr1, arr2) {
+    return [...new Set ([...arr1, ...arr2])];
+}
+
+const arrayNew = twoArraysWithoutDoubles (arr1,arr2)
+
+console.log(arrayNew);
+
+
+// 2 варіант рішення
+
+// const  twoArraysWithoutDoubles = (arr1,arr2) => [...new Set ([...arr1, ...arr2])];
