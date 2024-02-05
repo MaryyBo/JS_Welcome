@@ -1,63 +1,41 @@
-// /*
-// задача: Зберегти розклад занять, використовуючи дні тижня, як клчюі , а знаечннями будуть списки занять 
-// */
+/*set - це ніби сосуд, колекція УНІКАЛЬНИХ значень, елементів, кожен елем в цьому сосуді можезустрічатися тільки один раз. 
+Він схожий на масив чи на мапу, але сет не допускає наявності дублікатів.Якщо додаєм значення 
+до set воно буде збережено лише одинраз 
 
-// const schedule = new Map();
+set - множина (множество) набір уникальних значень
 
-// schedule.set('Понеділок', ['Математика', 'Фізика']);
-// schedule.set('Вівторок', ['Англійська мова', 'Всесвітня Історя']);
-// schedule.set('Середа', ['Хімія', 'Географія']);
-// schedule.set('Четвер', ['Зарубіжна література', 'Біологія']);
-// schedule.set('П\'ятниця', ['Інформатика', 'Фізкультура']);
-
-// // Отримання розкладу занять для певного дня
-// console.log(schedule.get('Понеділок'));
+Значення додаються за допомогою методу -  .add
 
 
+*/
 
-// // Перевірка, чи є  розклад занять для певного дня
+const set = new Set();
 
-// console.log(schedule.has('Субота'))  //false
+// set.prototype.add - додає новий елемент із заданим значенням у кінеуь об'єкта Set
 
-// // Отримання кількості днів в розкладі
+set.add(1);
+set.add(4);
+set.add('Hello');
+set.add('Hello'); // Дублікати НЕ додаються в Set!!!
 
-// console.log(schedule.size);
+// set.prototype.has - перевіряє наявність елементу у множині (setі)
 
+console.log(set.has(1)); //true
+console.log(set.has(12)); //false
 
+// set.prototype.delete - удаляє елемент з множини 
 
-// Задача : Дано 2 об'єкти юзерів:
+set.delete('Hello');
 
-const user1 = {
-    firstName: 'Alex',
-    lastName: 'Doe',
-    id: 1
-  }
-  
-const user2 = {
-  firstName: 'John',
-  lastName: 'Doe',
-  id: 2
-}
-  
- // Також дано 2 масиви з повідомленнями цих юзерів:
-  
-  const alexMessages = ['hello', 'How are you?'];
-  const johnMessages = ['hi!', 'I`m fine'];
+const set2 = new Set([2,3,4,5]);
 
-  //Задача: за допомогою Map зв'язати користувача з його повідомленнями, щоб по ID користувача, можна було знайти його повідомлення
+// з set можно зробити масив
 
-  const messagesFromUsers = new Map();
+// set.prototype.values - використов для отримання ітератора який повертає нам всі значення з об'єкта set
+ const valuesIterator = set.values();
 
-  messagesFromUsers.set(user1.id, alexMessages);
-  messagesFromUsers.set(user2.id, johnMessages);
+ valuesIterator.next().value; // 1
+ valuesIterator.next().value; // 4
+ valuesIterator.next().value; // undefined, done: true
 
-  function getMessagesFromUsers (userId) {
-   return messagesFromUsers.get(userId)
-
-  }
-
-console.log(`${user1.firstName} ${user1.lastName}: `  + getMessagesFromUsers(1));
-console.log(`${user2.firstName} ${user2.lastName}: `  + getMessagesFromUsers(2));
-
-
-
+ const arrayFromSet = [...set.values()];
