@@ -1,29 +1,52 @@
-
-/*Дано два масиви:
-
-const arr1 = [4, 3, 7, 5, -11];
-const arr2 = [3, 4, 8, 7, 2, -11];
-
-Повернути з функції масив, що складається з різниці двох масивів (тобто, тих значень, які не повторюються в обох масивах)
-
-// Логіка:
-Ви приймаєте 2 масиви
-Вам потрібно зробити новий масив, але там не повинно бути дублювань
-*/
-
-const arr1 = [4, 3, 7, 5, -11];
-const arr2 = [3, 4, 8, 7, 2, -11];
-
-
-function twoArraysWithoutDoubles  (arr1, arr2) {
-    return [...new Set ([...arr1, ...arr2])];
+const monitor = {
+    sizes: {
+        height: {
+            value: 30,
+            scale: 'cm // 1'
+        },
+        width: {
+            value: 50,
+            scale: 'cm // 2'
+        }
+    },
+    brightness: 750,
+    refresh: {
+        value: 144,
+        scale: 'Grc'
+    },
+    color: 'black',
+    resolution: '4K'
 }
 
-const arrayNew = twoArraysWithoutDoubles (arr1,arr2)
+// console.log(monitor.color);
+// console.log(monitor.sizes.height.value); // прокладаємо шлях до value, але це НЕ ЗРУЧНО
 
-console.log(arrayNew);
+// // const height = monitor.sizes.height.value; // можно зберегти значення в змінну, і використовувати по призначенню
+// console.log(height);
+
+// //Але для цього є ДЕСТРУКТКРИЗАЦІЯ (спеціальний синтаксис присвоєння, витягує властивості з об'єкту)
+
+// const {resolution, color} = monitor; // якщо треба декілька властивостей, то можна перерах ії через кому
+// console.log(resolution);
+// console.log(color);
+
+// const {resolution, color: monitorColor} = monitor; // якщо хочему змінити назву color і щоб в змінну записалось нове ім'я color: monitorColor
 
 
-// 2 варіант рішення
+// Задача: Витягнути value для висоти та ширини монітору
 
-// const  twoArraysWithoutDoubles = (arr1,arr2) => [...new Set ([...arr1, ...arr2])];
+// const {sizes: {height: {value: heightValue}, width: {value: widthValue} }, brightness, refresh: {value: refreshValue}} = monitor; // переназвали змінну на heightValue
+// console.log(heightValue); // heightValue - це тепер змінна
+
+// // const {sizes: {width: {value: widthValue}}} = monitor; 
+// console.log(widthValue); //widthValue - це тепер змінна
+// console.log(refreshValue);
+// console.log(brightness);
+
+// const {sizes: {height: {scale: scaleHeight}, width: {scale: scaleWidth} }} = monitor; 
+// console.log(scaleHeight);
+// console.log(scaleWidth);
+
+
+const {color, brightness, resolution, ...restOfMonitor} = monitor;
+//...restOfMonitor - все інше записалось у рест об'єкт
